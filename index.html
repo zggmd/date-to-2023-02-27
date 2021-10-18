@@ -19,6 +19,7 @@
     function setValue() {
       document.getElementById('days').innerHTML = getDays(2023, 2, 7).toFixed(8)
     }
-    setTimeout(setValue, 1000)
+    setInterval(setValue, 1000)
+    setValue()
   </script>
 </html>
