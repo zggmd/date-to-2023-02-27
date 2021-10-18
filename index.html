@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+  </head>
+  <body>
+    <span>距离 2023-02-07 还有：</span>
+    <span id="days">
+    </span>
+  </body>
+  <script>
+    function getDays(year, mouth, day){
+      const s = new Date(year, mouth - 1, day).getTime() - new Date().getTime();
+      return s/ 60 / 60 / 24 / 1000
+    }
+    function setValue() {
+      document.getElementById('days').innerHTML = getDays(2023, 2, 7).toFixed(2)
+    }
+    setValue()
+  </script>
+</html>
