@@ -1,20 +1,43 @@
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" /> 
-  </head>
-  <body>
-    <span>距离 2023-02-07 还有：</span>
-    <span id="days">
-    </span>
-  </body>
-  <script>
-    function getDays(year, mouth, day){
-      const s = new Date(year, mouth - 1, day).getTime() - new Date().getTime();
-      return s/ 60 / 60 / 24 / 1000
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>下班倒计时</title>
+  <style>
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     }
-    function setValue() {
-      document.getElementById('days').innerHTML = getDays(2023, 2, 7).toFixed(2)
+    .title {
+        font-size: 23px;
+        margin-top: 23px;
+        margin-bottom: 40px;
     }
-    setValue()
-  </script>
+    #container {
+        font-size: 30px;
+        color: darkcyan;
+        margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+<script src="https://cdn.bootcdn.net/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script>
+  setInterval(() => {
+    let start = moment(new Date());//获取开始时间
+    let end = moment('Fri Dec 31 2021 15:30:00 GMT+0800');//结束时间
+    let diff = end.diff(start);//时间差
+    let time = `${moment.duration(diff).hours()} 小时 ${moment.duration(diff).minutes()} 分 ${moment.duration(diff).seconds()} 秒`//格式化为需要的格式 这里是时分秒
+    document.getElementById('container').innerText = time
+  }, 1000)
+</script>
+<div class="title">下班倒计时</div>
+<div id="container"></div>
+</body>
+
 </html>
